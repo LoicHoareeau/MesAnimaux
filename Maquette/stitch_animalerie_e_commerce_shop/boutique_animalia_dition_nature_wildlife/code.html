@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>Animalia — Apothicairerie Naturelle &amp; Soins d'Exception</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<!-- Elegant editorial typography: Newsreader (editorial serif) & Plus Jakarta Sans / Manrope -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+    .font-serif-editorial { font-family: 'Newsreader', Georgia, serif; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#012413",
+            "primary-container": "#183a27",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#80a48b",
+            "secondary": "#2d533a",
+            "secondary-container": "#b9ebc8",
+            "on-secondary-container": "#153e24",
+            "tertiary": "#a34825",
+            "tertiary-container": "#ffdbd0",
+            "surface": "#f4fbf3",
+            "surface-bright": "#fbfdfb",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eef6ed",
+            "surface-container": "#e6efe5",
+            "surface-container-high": "#dde8dc",
+            "surface-container-highest": "#d2ded0",
+            "on-surface": "#121a14",
+            "on-surface-variant": "#434d44",
+            "outline": "#738074",
+            "outline-variant": "#c4d1c3",
+            "background": "#f4fbf3"
+          },
+          fontFamily: {
+            sans: ['Manrope', 'sans-serif'],
+            serif: ['Newsreader', 'Georgia', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#f5f8f5] font-sans text-on-surface antialiased selection:bg-secondary-container selection:text-primary">
+<!-- TOP EDITORIAL NOTIFICATION BAR -->
+<aside class="bg-[#0b1f14] text-[#d4e8db] py-2 px-4 text-xs tracking-wider border-b border-[#1b3626]">
+<div class="max-w-[1360px] mx-auto flex items-center justify-between">
+<div class="hidden sm:flex items-center gap-2">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+<span class="font-medium text-[#c0dac9]">Apothicairerie biologique &amp; nutrition vivante pour animaux</span>
+</div>
+<div class="w-full sm:w-auto text-center flex items-center justify-center gap-4 text-[11px] font-medium uppercase tracking-widest text-[#a8cdb4]">
+<span>Livraison neutre en carbone dès 49€</span>
+<span class="opacity-30">•</span>
+<span>1% reversé aux sanctuaires fauniques</span>
+</div>
+<div class="hidden md:flex items-center gap-4 text-[11px] text-[#a8cdb4]">
+<span class="hover:text-white cursor-pointer transition-colors">Nos engagements bio</span>
+<span class="hover:text-white cursor-pointer transition-colors">Vétérinaires conseils</span>
+</div>
+</div>
+</aside>
+<!-- REFINED EDITORIAL HEADER (Birdly Inspired) -->
+<header class="sticky top-0 left-0 right-0 z-40 bg-[#f5f8f5]/90 backdrop-blur-md border-b border-[#e1eae1] transition-all">
+<div class="max-w-[1360px] mx-auto px-5 lg:px-10 h-20 flex items-center justify-between gap-6">
+<!-- Brand Identity -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-2.5 group" href="#">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[18px]">nature_people</span>
+</div>
+<div class="flex flex-col">
+<span class="font-serif text-2xl font-normal tracking-tight text-primary leading-none group-hover:text-emerald-800 transition-colors">Animalia</span>
+<span class="text-[9px] uppercase tracking-[0.25em] text-[#556959] font-semibold mt-0.5">Boutique &amp; Nature</span>
+</div>
+</a>
+<!-- Main Editorial Navigation -->
+<nav class="hidden lg:flex items-center gap-7 text-[13px] tracking-wide font-medium text-[#2d3a30]">
+<a class="text-primary font-semibold border-b-2 border-primary pb-0.5" href="#catalogue">Tous les soins &amp; vivres</a>
+<a class="text-[#556658] hover:text-primary transition-colors" href="#catalogue">Chiens &amp; Chiots</a>
+<a class="text-[#556658] hover:text-primary transition-colors" href="#catalogue">Chats &amp; Félins</a>
+<a class="text-[#556658] hover:text-primary transition-colors" href="#catalogue">Petits mammifères</a>
+<a class="text-[#556658] hover:text-primary transition-colors" href="#engagements">Conservation &amp; Charte</a>
+</nav>
+</div>
+<!-- Quick Search Bar (Editorial Minimalist) -->
+<div class="flex-1 max-w-sm hidden md:block">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[#768a7a] text-[18px]">search</span>
+<input class="w-full bg-[#eaf2ea]/80 border border-[#d5e2d5] hover:border-[#b8ccb8] focus:border-primary pl-9 pr-4 py-2 rounded-full text-xs text-[#1e2b21] placeholder:text-[#809484] focus:outline-none focus:ring-1 focus:ring-primary transition-all" placeholder="Rechercher saumon sauvage, jouet chanvre, litière..." type="text"/>
+</div>
+</div>
+<!-- Header Action Elements -->
+<div class="flex items-center gap-3">
+<button aria-label="Favoris" class="w-10 h-10 rounded-full border border-[#d5e2d5] flex items-center justify-center text-[#2d3a30] hover:bg-[#e4ede4] hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[19px]">favorite</span>
+</button>
+<!-- Cart Trigger Button -->
+<button aria-label="Mon panier" class="h-10 px-4 rounded-full bg-primary text-white hover:bg-[#153a25] transition-all flex items-center gap-2 text-xs font-semibold shadow-sm" id="openCartTrigger">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+<span class="hidden sm:inline">Panier</span>
+<span class="w-5 h-5 rounded-full bg-[#a34825] text-white text-[11px] flex items-center justify-center font-bold" id="headerCartCount">0</span>
+</button>
+</div>
+</div>
+</header>
+<main class="w-full">
+<!-- TOAST NOTIFICATION -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-primary text-white px-5 py-3 rounded-2xl shadow-xl border border-white/10" id="cartToast">
+<span class="material-symbols-outlined text-secondary-container text-xl" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="text-xs font-medium" id="toastMessage">Produit ajouté à votre sélection.</span>
+</div>
+<!-- CART SLIDE-OVER DRAWER -->
+<div class="fixed inset-0 z-50 bg-[#06180e]/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" id="cartDrawerBackdrop">
+<div class="absolute top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-out border-l border-[#dce6dc]" id="cartDrawer">
+<!-- Drawer Header -->
+<div class="p-6 bg-[#f7faf7] border-b border-[#e1eae1] flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[22px]">shopping_bag</span>
+<h3 class="font-serif text-xl font-normal text-primary">Votre Sélection Bio</h3>
+<span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-[#e3ece3] text-primary" id="drawerBadgeCount">0</span>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-[#435246] hover:bg-[#e4ede4] transition-colors" id="closeCartBtn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Free Shipping Meter -->
+<div class="px-6 py-3.5 bg-[#eff5ef] border-b border-[#e1eae1]">
+<div class="flex justify-between items-center text-xs mb-1.5 font-medium text-[#37493a]">
+<span id="shippingGoalText">Livraison offerte à partir de <strong class="text-primary font-bold">49,00€</strong></span>
+<span class="material-symbols-outlined text-base text-primary">local_shipping</span>
+</div>
+<div class="w-full h-1.5 bg-[#dbe6db] rounded-full overflow-hidden">
+<div class="h-full bg-primary transition-all duration-500 rounded-full" id="shippingProgressBar" style="width: 0%;"></div>
+</div>
+</div>
+<!-- Cart Item List -->
+<div class="flex-1 overflow-y-auto p-6 space-y-4" id="cartItemsContainer">
+<!-- Populated by JavaScript -->
+</div>
+<!-- Cart Summary Footer -->
+<div class="p-6 bg-[#fbfdfb] border-t border-[#e6eee6] space-y-3">
+<div class="flex justify-between text-xs text-[#526455]">
+<span>Sous-total articles</span>
+<span class="font-semibold text-on-surface" id="drawerSubtotal">0,00€</span>
+</div>
+<div class="flex justify-between text-xs text-[#526455]">
+<span>Expédition éco-responsable</span>
+<span class="font-semibold text-on-surface" id="drawerShipping">4,90€</span>
+</div>
+<div class="flex justify-between text-base font-serif text-primary pt-2 border-t border-dashed border-[#dce6dc]">
+<span class="font-normal">Total estimé</span>
+<span class="font-bold text-lg font-sans text-primary" id="drawerTotal">0,00€</span>
+</div>
+<p class="text-[11px] text-[#697d6d] flex items-center justify-center gap-1.5 pt-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-700">nest_eco_leaf</span>
+            Colis recyclé kraft &amp; compensation carbone intégrée
+          </p>
+<button class="w-full py-3.5 bg-primary text-white rounded-full text-xs font-semibold uppercase tracking-wider hover:bg-[#133822] transition-all flex items-center justify-center gap-2 shadow-sm" id="checkoutBtn">
+<span>Valider ma commande</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- BIRDLY-STYLE EDITORIAL HERO SECTION -->
+<section class="relative max-w-[1360px] mx-auto px-5 lg:px-10 pt-8 pb-16 lg:pt-12 lg:pb-24">
+<div class="relative rounded-[32px] overflow-hidden bg-primary text-white border border-[#21432f] shadow-2xl">
+<!-- Editorial Background Ambience -->
+<div class="absolute inset-0 bg-gradient-to-r from-[#031c10] via-[#092918] to-transparent z-10 opacity-90"></div>
+<div class="absolute top-0 right-0 w-2/3 h-full overflow-hidden hidden md:block">
+<img alt="Compagnons sereins dans un intérieur naturel" class="w-full h-full object-cover object-center scale-105 opacity-60 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpRwvCzEWODpPCfCXnrqdcgveHMpEWhXydJ5aD37rP56oY6_snyL-6M11sGSxz2GpdrdlXTeZJyU1Sjz7bRrKkwdGTSMsKfqv1RRx1v1xglrAKSD7cSsnNWfJAM62JlTh2H4ZFPqrvKS8cBgevOtZ3aXqYBpwhpf9Zr6C-vI5ZpSss_yt-ecqlTUcRf3JtOYr5qKo1LY5FvETexSJXzSx5cgio5UEjtfwEm1rdIaVI"/>
+</div>
+<div class="relative z-20 p-8 sm:p-12 lg:p-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Editorial Typography & Storytelling -->
+<div class="lg:col-span-8 space-y-6">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[11px] uppercase tracking-[0.2em] font-medium text-[#c4e3cf]">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              Manifeste pour une vie animale noble &amp; saine
+            </div>
+<h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-white leading-[1.15]">
+              Nourrir, choyer &amp; célébrer leur <span class="italic font-serif text-[#b9ebc8] font-normal">nature authentique</span>.
+            </h1>
+<p class="text-[#c1d6c7] font-light text-base sm:text-lg max-w-2xl leading-relaxed">
+              Une sélection rigoureuse d’ingrédients biologiques pressés à froid, de jouets durables en fibres pures et de soins botaniques certifiés. Pensé comme un hommage à leur équilibre sauvage.
+            </p>
+<div class="pt-2 flex flex-wrap items-center gap-4">
+<a class="px-7 py-3.5 bg-white text-primary rounded-full text-xs font-semibold uppercase tracking-wider hover:bg-[#d8edd9] transition-all flex items-center gap-2.5 shadow-lg" href="#catalogue">
+<span>Explorer les récoltes</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+<a class="px-6 py-3.5 rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors text-xs font-semibold uppercase tracking-wider flex items-center gap-2" href="#engagements">
+<span>Notre charte éthique</span>
+</a>
+</div>
+<!-- Birdly-style Metrics Row -->
+<div class="pt-8 border-t border-white/15 grid grid-cols-3 gap-6 max-w-lg">
+<div>
+<span class="block font-serif text-2xl lg:text-3xl text-white font-normal">100%</span>
+<span class="text-[11px] uppercase tracking-wider text-[#9cbba4] font-medium">Ingrédients nobles</span>
+</div>
+<div>
+<span class="block font-serif text-2xl lg:text-3xl text-white font-normal">24+</span>
+<span class="text-[11px] uppercase tracking-wider text-[#9cbba4] font-medium">Vétérinaires co-auteurs</span>
+</div>
+<div>
+<span class="block font-serif text-2xl lg:text-3xl text-white font-normal">1%</span>
+<span class="text-[11px] uppercase tracking-wider text-[#9cbba4] font-medium">Sanctuaires &amp; Refuges</span>
+</div>
+</div>
+</div>
+<!-- Editorial Floating Feature Card -->
+<div class="lg:col-span-4 flex justify-end">
+<div class="bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl w-full max-w-sm space-y-4 shadow-2xl">
+<div class="flex items-center justify-between">
+<span class="text-[10px] uppercase font-semibold tracking-widest text-[#a1d2af]">Coup de cœur clinique</span>
+<div class="flex items-center text-amber-300 text-xs">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold ml-1 text-white text-xs">4.9 / 5</span>
+</div>
+</div>
+<p class="font-serif italic text-white/90 text-sm leading-snug">
+                « Enfin une marque qui respecte scrupuleusement la biologie digestive de nos carnivores sans artifice marketing. »
+              </p>
+<div class="pt-3 border-t border-white/10 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-emerald-800 text-white flex items-center justify-center text-xs font-serif">Dr</div>
+<div>
+<h4 class="text-xs font-medium text-white">Dr. Claire Vareille</h4>
+<p class="text-[10px] text-[#9cbba4]">Vétérinaire nutritionniste, Lyon</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SPECIES CURATION SELECTOR -->
+<section class="max-w-[1360px] mx-auto px-5 lg:px-10 py-6">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+<div>
+<span class="text-[11px] uppercase tracking-[0.2em] font-bold text-[#44684e]">Par univers animal</span>
+<h2 class="font-serif text-2xl sm:text-3xl font-normal text-primary mt-1">Sélectionner votre compagnon</h2>
+</div>
+<p class="text-xs text-[#637666]">Filtrez instantanément l'ensemble du vestiaire &amp; garde-manger</p>
+</div>
+<!-- Birdly Clean Species Buttons -->
+<div class="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none" id="speciesFilterBar">
+<button class="species-btn active px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-all bg-primary text-white shadow-sm flex items-center gap-2" data-specie="all">
+<span class="material-symbols-outlined text-[16px]">all_inclusive</span>
+<span>Tous les compagnons</span>
+</button>
+<button class="species-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all bg-white border border-[#d5e0d5] text-[#2d3d30] hover:border-primary hover:text-primary flex items-center gap-2" data-specie="chien">
+<span class="material-symbols-outlined text-[16px]">sound_detection_dog_barking</span>
+<span>Chiens &amp; Chiots</span>
+</button>
+<button class="species-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all bg-white border border-[#d5e0d5] text-[#2d3d30] hover:border-primary hover:text-primary flex items-center gap-2" data-specie="chat">
+<span class="material-symbols-outlined text-[16px]">cruelty_free</span>
+<span>Chats &amp; Félins</span>
+</button>
+<button class="species-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all bg-white border border-[#d5e0d5] text-[#2d3d30] hover:border-primary hover:text-primary flex items-center gap-2" data-specie="rongeur">
+<span class="material-symbols-outlined text-[16px]">pest_control_rodent</span>
+<span>Petits mammifères</span>
+</button>
+<button class="species-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all bg-white border border-[#d5e0d5] text-[#2d3d30] hover:border-primary hover:text-primary flex items-center gap-2" data-specie="oiseau">
+<span class="material-symbols-outlined text-[16px]">flutter_dash</span>
+<span>Oiseaux du ciel</span>
+</button>
+</div>
+</section>
+<!-- REFINED EDITORIAL CATALOGUE SECTION -->
+<section class="max-w-[1360px] mx-auto px-5 lg:px-10 py-10 lg:py-16" id="catalogue">
+<!-- Filter and Header Bar -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#dce6dc] mb-10">
+<div>
+<span class="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#4e6a54]">Édition Permanente</span>
+<h2 class="font-serif text-3xl sm:text-4xl text-primary font-normal mt-1">Soins &amp; Vivres Botaniques</h2>
+</div>
+<!-- Filter Sub-categories -->
+<div class="flex items-center gap-2 flex-wrap" id="categoryFilterBar">
+<button class="cat-btn active px-4 py-1.5 rounded-full text-xs font-semibold bg-primary text-white transition-all" data-cat="all">Tous</button>
+<button class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium text-[#465b4a] hover:bg-[#e4ede4] transition-all" data-cat="Alimentation">Nutrition bio</button>
+<button class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium text-[#465b4a] hover:bg-[#e4ede4] transition-all" data-cat="Loisirs">Jeux &amp; Éveil</button>
+<button class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium text-[#465b4a] hover:bg-[#e4ede4] transition-all" data-cat="Fashion">Mobilier &amp; Sellerie</button>
+<button class="cat-btn px-4 py-1.5 rounded-full text-xs font-medium text-[#465b4a] hover:bg-[#e4ede4] transition-all" data-cat="Soins">Soins cliniques</button>
+</div>
+</div>
+<!-- PRODUCTS GRID -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="productGrid">
+<!-- CARD 1 -->
+<article class="product-card group bg-white rounded-3xl p-5 border border-[#e1eae1] hover:border-[#b8cdb9] transition-all duration-300 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-xl" data-cat="Alimentation" data-id="prod-1" data-img-alt="Sachet artisanal de croquettes au saumon sauvage" data-name="Croquettes Bio Saumon &amp; Riz Brun pour Chien" data-price="28.90" data-specie="chien">
+<div>
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#edf4ed] mb-5">
+<img alt="Sachet artisanal de croquettes au saumon sauvage" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABTe_srfssP1On83DN7NQIaMfOi0Xo3E09TaBPnQYu4EqddIeF2mSry427V0yEOE6RPMBOPxksj2h_MYx73l3dP59j4dUZjFLyu6opT_GhwCzw0zi3l20nDbekYcTA98FswPdVomLAaCQHiYy9moGnM8PUbwYnNVyESM20ZtnN7o-bTZpvyT4tt5dBxPG56GSQ4tcJdGXlTr_7UrKWsGP5LOfQzzUIzmb40wpQ9aXY"/>
+<span class="absolute top-3 left-3 bg-[#0d2e1c] text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                Recette Botanique
+              </span>
+<button class="fav-btn absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur text-[#3d5041] hover:text-[#a34825] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[17px]">favorite</span>
+</button>
+</div>
+<div class="flex items-center justify-between text-xs text-[#6e8271] mb-2 font-medium">
+<span>Chien • Alimentation Pressée à Froid</span>
+<div class="flex items-center text-amber-700">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface ml-1">4.9</span>
+</div>
+</div>
+<h3 class="font-serif text-xl font-normal text-primary group-hover:text-emerald-900 transition-colors leading-snug mb-2">
+              Croquettes Bio Saumon &amp; Riz Brun pour Chien
+            </h3>
+<p class="text-xs text-[#526455] leading-relaxed line-clamp-2 mb-4">
+              Pêche sauvage responsable, herbes officinales et fibres douces. Idéal pour pelages délicats et estomacs sensibles.
+            </p>
+</div>
+<div class="pt-4 border-t border-[#edf3ed] flex items-center justify-between mt-auto">
+<div>
+<span class="text-lg font-serif font-medium text-primary">28,90€</span>
+<span class="block text-[10px] text-[#738475]">Sac kraft 3kg • 9,63€/kg</span>
+</div>
+<button class="add-to-cart-btn h-10 px-5 rounded-full bg-[#183a27] text-white hover:bg-primary transition-all text-xs font-semibold flex items-center gap-1.5 shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Ajouter</span>
+</button>
+</div>
+</article>
+<!-- CARD 2 -->
+<article class="product-card group bg-white rounded-3xl p-5 border border-[#e1eae1] hover:border-[#b8cdb9] transition-all duration-300 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-xl" data-cat="Fashion" data-id="prod-2" data-img-alt="Arbre à chat minimaliste en bouleau naturel" data-name="Arbre à chat sculptural en bois de bouleau &amp; jute" data-price="89.00" data-specie="chat">
+<div>
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#edf4ed] mb-5">
+<img alt="Arbre à chat minimaliste en bouleau naturel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAWdaML_FO8TgWRqxnqeIyTw1WEyHessUfz8rYV0aBtfpnXHGMJQARtBLzf-juh345Wf6iEeyN4aLqCNT4Qih2tL4SaylL8eA47doCmk6B0b7Ty1HxfnCx_CjB7oglBnEPQdlCEdu8b_oOUWKmKgab4kHRi4_efnApBF11i_Uxdwyd77WvAZcAYrUdqF3o3bx0rr-CPYd0qBLjLtgZ2mnvGrZRdyqeahHQchv1_tWD"/>
+<span class="absolute top-3 left-3 bg-[#1e3d29] text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                Artisanat Nordique
+              </span>
+<button class="fav-btn absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur text-[#3d5041] hover:text-[#a34825] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[17px]">favorite</span>
+</button>
+</div>
+<div class="flex items-center justify-between text-xs text-[#6e8271] mb-2 font-medium">
+<span>Chat • Mobilier Déco &amp; Repos</span>
+<div class="flex items-center text-amber-700">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface ml-1">5.0</span>
+</div>
+</div>
+<h3 class="font-serif text-xl font-normal text-primary group-hover:text-emerald-900 transition-colors leading-snug mb-2">
+              Arbre à chat sculptural en bois de bouleau &amp; jute
+            </h3>
+<p class="text-xs text-[#526455] leading-relaxed line-clamp-2 mb-4">
+              Hêtre massif de forêts éco-gérées, corde de chanvre naturel et matelas amovible en lin brut lavé.
+            </p>
+</div>
+<div class="pt-4 border-t border-[#edf3ed] flex items-center justify-between mt-auto">
+<div>
+<span class="text-lg font-serif font-medium text-primary">89,00€</span>
+<span class="block text-[10px] text-emerald-800 font-medium">Livraison offerte</span>
+</div>
+<button class="add-to-cart-btn h-10 px-5 rounded-full bg-[#183a27] text-white hover:bg-primary transition-all text-xs font-semibold flex items-center gap-1.5 shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Ajouter</span>
+</button>
+</div>
+</article>
+<!-- CARD 3 -->
+<article class="product-card group bg-white rounded-3xl p-5 border border-[#e1eae1] hover:border-[#b8cdb9] transition-all duration-300 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-xl" data-cat="Fashion" data-id="prod-3" data-img-alt="Manteau chic olive pour chien" data-name="Manteau matelassé tout-temps 'WarmPaws'" data-price="34.50" data-specie="chien">
+<div>
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#edf4ed] mb-5">
+<img alt="Manteau chic olive pour chien" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwDt6xyMuuQvG01dAqWY6KD-nY-e20myU0MNvm20nKtgZ2c9hnTmOKNScYokDeu2gZPyfUuVA3dvVSAeM7P3GfbNXxLrKvopw1GfzyYjjcFeEVa85pT2lGGeC_XFqK2EzDOwWbHjXe7DoD1awjUcnnx1tdPD37AtTbuQmZc8rIG9c8zqRRgMadydddFkwg7WuUq08cKiIfk7hxgBQYHFJ8HMVp-QHHuCSjriEUACc0"/>
+<span class="absolute top-3 left-3 bg-[#384c3c] text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                Intempéries
+              </span>
+<button class="fav-btn absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur text-[#3d5041] hover:text-[#a34825] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[17px]">favorite</span>
+</button>
+</div>
+<div class="flex items-center justify-between text-xs text-[#6e8271] mb-2 font-medium">
+<span>Chien • Randonnée &amp; Confort</span>
+<div class="flex items-center text-amber-700">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface ml-1">4.8</span>
+</div>
+</div>
+<h3 class="font-serif text-xl font-normal text-primary group-hover:text-emerald-900 transition-colors leading-snug mb-2">
+              Manteau matelassé tout-temps 'WarmPaws'
+            </h3>
+<p class="text-xs text-[#526455] leading-relaxed line-clamp-2 mb-4">
+              Toile technique déperlante à base de plastiques côtiers recyclés. Doublure respirante thermo-régulatrice.
+            </p>
+</div>
+<div class="pt-4 border-t border-[#edf3ed] flex items-center justify-between mt-auto">
+<div>
+<span class="text-lg font-serif font-medium text-primary">34,50€</span>
+<span class="block text-[10px] text-[#738475]">Coloris Vert Mousse • S au XXL</span>
+</div>
+<button class="add-to-cart-btn h-10 px-5 rounded-full bg-[#183a27] text-white hover:bg-primary transition-all text-xs font-semibold flex items-center gap-1.5 shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Ajouter</span>
+</button>
+</div>
+</article>
+<!-- CARD 4 -->
+<article class="product-card group bg-white rounded-3xl p-5 border border-[#e1eae1] hover:border-[#b8cdb9] transition-all duration-300 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-xl" data-cat="Loisirs" data-id="prod-4" data-img-alt="Puzzle en bois interactif pour animaux" data-name="Puzzle d'exploration cognitive en bambou naturel" data-price="22.00" data-specie="chien">
+<div>
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#edf4ed] mb-5">
+<img alt="Puzzle en bois interactif pour animaux" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-x2GtCeXX7VvLVTBzJ58LhjFaCJs_MeixIh2iC0mbJv-OZdf6JGIa2k9RG32RTdayXqfMhiZh-XcyxiPn7Z1Ycq4LtYKupE7TnXcAaqVJFnxZbYAHZ1_lU-r9gOfKFcpW1lPccqToCji3XNX04cFrKxw7gYK3YYtvlY4lCcsML48Oa5fN-QPPzkOeq6EqE4pe4dN807DFUZmt9H2H_lSB3fzO6iB90IKufUAO_pzl"/>
+<span class="absolute top-3 left-3 bg-[#423c28] text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                Éveil Cognitif
+              </span>
+<button class="fav-btn absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur text-[#3d5041] hover:text-[#a34825] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[17px]">favorite</span>
+</button>
+</div>
+<div class="flex items-center justify-between text-xs text-[#6e8271] mb-2 font-medium">
+<span>Chien &amp; Félin • Jeux &amp; Apaisement</span>
+<div class="flex items-center text-amber-700">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface ml-1">4.7</span>
+</div>
+</div>
+<h3 class="font-serif text-xl font-normal text-primary group-hover:text-emerald-900 transition-colors leading-snug mb-2">
+              Puzzle d'exploration cognitive en bambou naturel
+            </h3>
+<p class="text-xs text-[#526455] leading-relaxed line-clamp-2 mb-4">
+              Favorise la concentration, réduit l'anxiété de séparation et régule la vitesse d'ingestion des friandises.
+            </p>
+</div>
+<div class="pt-4 border-t border-[#edf3ed] flex items-center justify-between mt-auto">
+<div>
+<span class="text-lg font-serif font-medium text-primary">22,00€</span>
+<span class="block text-[10px] text-[#738475]">Bois poli non toxique</span>
+</div>
+<button class="add-to-cart-btn h-10 px-5 rounded-full bg-[#183a27] text-white hover:bg-primary transition-all text-xs font-semibold flex items-center gap-1.5 shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Ajouter</span>
+</button>
+</div>
+</article>
+<!-- CARD 5 -->
+<article class="product-card group bg-white rounded-3xl p-5 border border-[#e1eae1] hover:border-[#b8cdb9] transition-all duration-300 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-xl" data-cat="Soins" data-id="prod-5" data-img-alt="Bâtonnets dentaires bio aux plantes" data-name="Sticks dentaires bio à la spiruline &amp; persil" data-price="7.90" data-specie="chien">
+<div>
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#edf4ed] mb-5">
+<img alt="Bâtonnets dentaires bio aux plantes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiDNA8-B4ghIONUKFTUmASYxOIN6AT16ZgBCAShWl-lYOtgkKVRdrykZVuV3etJXXoiDeCC40r_4tVOzHBIZ_3-QI2W5rFIrp5fKPLHpBiKGYiTlVOGmebYIwDacnoqrJ_L2b-fYnQ1d_pjJae24qoJfq0jdfXD59onajDN1ySPeVpXs0S0RsCmuLt4Ig2XWxOq34uCTWNcS8A30YWgf1LeOwL_5_Y8TGS0aACz-5A"/>
+<span class="absolute top-3 left-3 bg-[#133c2a] text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                Hygiène Vétérinaire
+              </span>
+<button class="fav-btn absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur text-[#3d5041] hover:text-[#a34825] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[17px]">favorite</span>
+</button>
+</div>
+<div class="flex items-center justify-between text-xs text-[#6e8271] mb-2 font-medium">
+<span>Chiot &amp; Adulte • Soins Bucco-dentaires</span>
+<div class="flex items-center text-amber-700">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface ml-1">4.9</span>
+</div>
+</div>
+<h3 class="font-serif text-xl font-normal text-primary group-hover:text-emerald-900 transition-colors leading-snug mb-2">
+              Sticks dentaires bio à la spiruline &amp; persil
+            </h3>
+<p class="text-xs text-[#526455] leading-relaxed line-clamp-2 mb-4">
+              Enrichi en algues bretonnes et menthe douce pour une haleine fraîche et un détartrage mécanique tout en douceur.
+            </p>
+</div>
+<div class="pt-4 border-t border-[#edf3ed] flex items-center justify-between mt-auto">
+<div>
+<span class="text-lg font-serif font-medium text-primary">7,90€</span>
+<span class="block text-[10px] text-[#738475]">Étui compostable • 14 sticks</span>
+</div>
+<button class="add-to-cart-btn h-10 px-5 rounded-full bg-[#183a27] text-white hover:bg-primary transition-all text-xs font-semibold flex items-center gap-1.5 shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Ajouter</span>
+</button>
+</div>
+</article>
+<!-- CARD 6 -->
+<article class="product-card group bg-white rounded-3xl p-5 border border-[#e1eae1] hover:border-[#b8cdb9] transition-all duration-300 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-xl" data-cat="Fashion" data-id="prod-6" data-img-alt="Harnais ergonomique terracotta" data-name="Harnais ergonomique anti-traction en lin &amp; laiton" data-price="24.90" data-specie="chien">
+<div>
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#edf4ed] mb-5">
+<img alt="Harnais ergonomique terracotta" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnuz8bh-p880wcqdgItZaLmefnqp3ns9vB5jlwPiHqp2psL5nfTeUqYa1MMLLmUSscdX8YrAjIdUeNIiQ_iZ_PT8hCYiK5rWoDxk1ePtVKWQo9wDEJMoMuscyd6qzKqvY5n38e4Mz6VqhdqO6RA9hZ_vRzRw2uHoYZBTtbxObsb7BgSCwHm_rpy_9K8ofBp6YVeQdEYeD7KNZ9X6agE2l5krM0zTpUxE8kPxlHx2WV"/>
+<span class="absolute top-3 left-3 bg-[#a34825] text-white text-[10px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm">
+                Confort Morphologique
+              </span>
+<button class="fav-btn absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur text-[#3d5041] hover:text-[#a34825] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[17px]">favorite</span>
+</button>
+</div>
+<div class="flex items-center justify-between text-xs text-[#6e8271] mb-2 font-medium">
+<span>Chien • Sellerie &amp; Randonnée</span>
+<div class="flex items-center text-amber-700">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-on-surface ml-1">4.9</span>
+</div>
+</div>
+<h3 class="font-serif text-xl font-normal text-primary group-hover:text-emerald-900 transition-colors leading-snug mb-2">
+              Harnais ergonomique anti-traction en lin &amp; laiton
+            </h3>
+<p class="text-xs text-[#526455] leading-relaxed line-clamp-2 mb-4">
+              Bouclerie en laiton mat durable, sangle rembourrée qui dégage complètement la trachée et les épaules lors de la marche.
+            </p>
+</div>
+<div class="pt-4 border-t border-[#edf3ed] flex items-center justify-between mt-auto">
+<div>
+<span class="text-lg font-serif font-medium text-primary">24,90€</span>
+<span class="block text-[10px] text-[#738475]">Coloris Terracotta Sauvage</span>
+</div>
+<button class="add-to-cart-btn h-10 px-5 rounded-full bg-[#183a27] text-white hover:bg-primary transition-all text-xs font-semibold flex items-center gap-1.5 shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Ajouter</span>
+</button>
+</div>
+</article>
+</div>
+<!-- No Products Found Notification -->
+<div class="hidden text-center py-20 bg-white rounded-3xl border border-dashed border-[#cfdbcf] mt-6" id="noProductsMsg">
+<span class="material-symbols-outlined text-[#7a8e7e] text-5xl mb-2">nature</span>
+<h4 class="font-serif text-xl text-primary">Aucun résultat pour ces critères</h4>
+<p class="text-xs text-[#5a6f5e] mt-1 max-w-sm mx-auto">Veuillez sélectionner une autre catégorie ou réinitialiser vos filtres.</p>
+</div>
+</section>
+<!-- BIRDLY-INSPIRED SUBSCRIPTION & CONSERVATION STRIP -->
+<section class="max-w-[1360px] mx-auto px-5 lg:px-10 py-10">
+<div class="rounded-3xl bg-[#0e271a] text-white p-8 lg:p-14 relative overflow-hidden border border-[#234530]">
+<div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-emerald-600/10 blur-3xl pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+<div class="lg:col-span-7 space-y-4">
+<span class="text-[11px] uppercase tracking-[0.2em] font-medium text-secondary-container">Abonnement Récoltes Saisonnières</span>
+<h3 class="font-serif text-3xl sm:text-4xl font-normal leading-tight">
+              Ne manquez plus jamais de vivres saines pour vos fidèles alliés.
+            </h3>
+<p class="text-xs sm:text-sm text-[#bed5c4] font-light leading-relaxed max-w-xl">
+              Programmez vos rations de croquettes biologiques, litières végétales et soins à la fréquence de votre choix. Bénéficiez de 10% d’économie permanente et de la flexibilité totale sans engagement.
+            </p>
+<div class="pt-2 flex flex-wrap items-center gap-4">
+<button class="px-6 py-3 bg-[#a34825] hover:bg-[#bd552e] text-white rounded-full text-xs font-semibold uppercase tracking-wider transition-colors shadow-md">
+                Configurer mon cycle de livraison
+              </button>
+<span class="text-xs text-[#9ebca6]">• Annulable en un clic à tout instant</span>
+</div>
+</div>
+<div class="lg:col-span-5 flex justify-center">
+<div class="w-full max-w-sm aspect-[4/3] rounded-2xl overflow-hidden border border-white/15 shadow-xl bg-white/5">
+<img alt="Boîte kraft d'abonnement livrée au pas de porte" class="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEZeRG6OfDCb7lRXreFQBhS74MAbtAut1f2nWRTsE-B0NpTLL_1vr1FMDl6QMIIay32mET_oKQ2cphY47h76dlkCTMwg-Ll_P6A5cf-VpIgG2prf5nX6VSoztxPKPenNFZIoVV9jzTVXluVbhmfQCkg2Rxg8ZZf9OWYey1ehGuZwpQhtyIG8j7P72Tf937kDlJbXpI3OJaseTLsx8D4jglhxVXl2PKzWhDzNpCcbcB"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- EDITORIAL VALUES & SANCTUARY INITIATIVE -->
+<section class="max-w-[1360px] mx-auto px-5 lg:px-10 py-16" id="engagements">
+<div class="text-center max-w-2xl mx-auto mb-14">
+<span class="text-[11px] uppercase tracking-[0.2em] font-semibold text-[#4e6a54]">Éthique &amp; Préservation</span>
+<h2 class="font-serif text-3xl sm:text-4xl text-primary font-normal mt-1">Conçu en communion avec la nature</h2>
+<p class="text-xs text-[#5c6f60] mt-2 leading-relaxed">
+          Chaque formule, chaque jouet et chaque emballage est guidé par notre boussole écologique et vétérinaire.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Pillar 1 -->
+<div class="bg-white rounded-3xl p-8 border border-[#e1eae1] shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-[#edf5ed] text-primary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[24px]">science</span>
+</div>
+<h3 class="font-serif text-xl font-normal text-primary mb-3">Nutrition Scientifique &amp; Vivante</h3>
+<p class="text-xs text-[#526455] leading-relaxed">
+              Formulée sans aucun déchet de boucherie ni farines animales douteuses. Des protéines nobles traçables et des micro-nutriments issus de la terre.
+            </p>
+</div>
+<span class="pt-6 mt-6 border-t border-[#f0f4f0] text-[11px] uppercase tracking-wider text-emerald-800 font-semibold flex items-center gap-1">
+<span>Lire le rapport vétérinaire</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+<!-- Pillar 2 -->
+<div class="bg-white rounded-3xl p-8 border border-[#e1eae1] shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-[#edf5ed] text-primary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[24px]">forest</span>
+</div>
+<h3 class="font-serif text-xl font-normal text-primary mb-3">1% pour la Biodiversité</h3>
+<p class="text-xs text-[#526455] leading-relaxed">
+              1% de chaque transaction finance directement des corridors écologiques et soutient des refuges indépendants dédiés à la faune blessée.
+            </p>
+</div>
+<span class="pt-6 mt-6 border-t border-[#f0f4f0] text-[11px] uppercase tracking-wider text-emerald-800 font-semibold flex items-center gap-1">
+<span>Découvrir nos sanctuaires</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+<!-- Pillar 3 -->
+<div class="bg-white rounded-3xl p-8 border border-[#e1eae1] shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-2xl bg-[#edf5ed] text-primary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[24px]">recycling</span>
+</div>
+<h3 class="font-serif text-xl font-normal text-primary mb-3">Objectif Zéro Plastique Brut</h3>
+<p class="text-xs text-[#526455] leading-relaxed">
+              Nos emballages utilisent des papiers kraft certifiés FSC, encres végétales compostables et fibres végétales renouvelables.
+            </p>
+</div>
+<span class="pt-6 mt-6 border-t border-[#f0f4f0] text-[11px] uppercase tracking-wider text-emerald-800 font-semibold flex items-center gap-1">
+<span>Charte packaging 2025</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</span>
+</div>
+</div>
+</section>
+</main>
+<!-- SOPHISTICATED BIRDLY FOOTER -->
+<footer class="bg-[#081a10] text-[#c9decb] border-t border-[#1b3624] pt-16 pb-12">
+<div class="max-w-[1360px] mx-auto px-5 lg:px-10">
+<!-- Footer Trust Pillars -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 pb-12 border-b border-[#1b3624]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-2xl">verified</span>
+<div>
+<p class="text-xs font-semibold text-white">Charte Vétérinaire</p>
+<p class="text-[11px] text-[#86a68b]">Formules validées scientifiquement</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-2xl">pets</span>
+<div>
+<p class="text-xs font-semibold text-white">Protection Animale</p>
+<p class="text-[11px] text-[#86a68b]">1% reversé aux sanctuaires</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-2xl">local_shipping</span>
+<div>
+<p class="text-xs font-semibold text-white">Expédition Éco-pensée</p>
+<p class="text-[11px] text-[#86a68b]">Emballages zéro plastique</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-2xl">support_agent</span>
+<div>
+<p class="text-xs font-semibold text-white">Conseillers Passionnés</p>
+<p class="text-[11px] text-[#86a68b]">Accompagnement 7j/7</p>
+</div>
+</div>
+</div>
+<!-- Footer Navigation and Brand Story -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 py-12">
+<div class="lg:col-span-5 space-y-4">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-white text-primary flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[18px]">nature_people</span>
+</div>
+<span class="font-serif text-2xl text-white">Animalia</span>
+</div>
+<p class="text-xs text-[#9bbda0] leading-relaxed max-w-sm">
+            Maison d'apothicairerie animale fondée sur l'harmonie entre bien-être domestique et respect des écosystèmes naturels.
+          </p>
+<form class="pt-2 max-w-sm space-y-2">
+<span class="text-[11px] uppercase tracking-wider text-white font-medium block">La lettre d'herboristerie &amp; conseils</span>
+<div class="flex gap-2">
+<input class="bg-[#122b1c] border border-[#23452f] rounded-full px-4 py-2 text-xs text-white placeholder:text-[#6a876e] focus:outline-none focus:border-white flex-1" placeholder="Votre adresse email..." type="email"/>
+<button class="px-5 py-2 rounded-full bg-white text-primary text-xs font-semibold hover:bg-secondary-container transition-colors" type="button">
+                Rejoindre
+              </button>
+</div>
+</form>
+</div>
+<div class="lg:col-span-2 lg:col-start-7">
+<h4 class="text-xs uppercase tracking-widest font-semibold text-white mb-4">Garde-manger</h4>
+<ul class="space-y-2.5 text-xs text-[#9bbda0]">
+<li><a class="hover:text-white transition-colors" href="#catalogue">Nutrition pressée à froid</a></li>
+<li><a class="hover:text-white transition-colors" href="#catalogue">Friandises déshydratées bio</a></li>
+<li><a class="hover:text-white transition-colors" href="#catalogue">Compléments phytothérapie</a></li>
+<li><a class="hover:text-white transition-colors" href="#catalogue">Litières végétales pures</a></li>
+</ul>
+</div>
+<div class="lg:col-span-2">
+<h4 class="text-xs uppercase tracking-widest font-semibold text-white mb-4">La Maison</h4>
+<ul class="space-y-2.5 text-xs text-[#9bbda0]">
+<li><a class="hover:text-white transition-colors" href="#engagements">Notre charte d'ingrédients</a></li>
+<li><a class="hover:text-white transition-colors" href="#engagements">Le collège vétérinaire</a></li>
+<li><a class="hover:text-white transition-colors" href="#engagements">Sanctuaires &amp; Sauvetages</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Emplacements partenaires</a></li>
+</ul>
+</div>
+<div class="lg:col-span-2">
+<h4 class="text-xs uppercase tracking-widest font-semibold text-white mb-4">Assistance</h4>
+<ul class="space-y-2.5 text-xs text-[#9bbda0]">
+<li><a class="hover:text-white transition-colors" href="#">Suivi d'expédition</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Livraisons &amp; Retours doux</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Aide nutritionnelle</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Contact &amp; Échange</a></li>
+</ul>
+</div>
+</div>
+<!-- Legal and Copyright -->
+<div class="pt-8 border-t border-[#1b3624] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#78967c]">
+<p>© 2025 Animalia Apothicairerie SARL. Tous droits réservés.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-white transition-colors" href="#">Mentions légales</a>
+<a class="hover:text-white transition-colors" href="#">Données &amp; Confidentialité</a>
+<a class="hover:text-white transition-colors" href="#">Conditions générales</a>
+<a class="hover:text-white transition-colors" href="#">Gestion des cookies</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- CLIENT-SIDE CART AND INTERACTIVITY SCRIPT -->
+<script>
+    (function () {
+      const STORAGE_KEY = 'animalia_cart';
+      
+      function loadCart() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : [];
+        } catch (e) {
+          console.error("Erreur panier :", e);
+          return [];
+        }
+      }
+
+      function saveCart(cart) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+        } catch (e) {
+          console.error("Sauvegarde impossible :", e);
+        }
+      }
+
+      let cart = loadCart();
+
+      // UI Elements
+      const drawer = document.getElementById('cartDrawer');
+      const backdrop = document.getElementById('cartDrawerBackdrop');
+      const closeBtn = document.getElementById('closeCartBtn');
+      const openTrigger = document.getElementById('openCartTrigger');
+      const cartItemsContainer = document.getElementById('cartItemsContainer');
+      const headerCartCount = document.getElementById('headerCartCount');
+      const drawerBadgeCount = document.getElementById('drawerBadgeCount');
+      const drawerSubtotal = document.getElementById('drawerSubtotal');
+      const drawerShipping = document.getElementById('drawerShipping');
+      const drawerTotal = document.getElementById('drawerTotal');
+      const shippingProgressBar = document.getElementById('shippingProgressBar');
+      const shippingGoalText = document.getElementById('shippingGoalText');
+      const toast = document.getElementById('cartToast');
+      const toastMessage = document.getElementById('toastMessage');
+
+      function syncBadges() {
+        const count = cart.reduce((acc, item) => acc + item.quantity, 0);
+        if (headerCartCount) headerCartCount.textContent = count;
+        if (drawerBadgeCount) drawerBadgeCount.textContent = count;
+      }
+
+      function openDrawer() {
+        backdrop.classList.remove('opacity-0', 'pointer-events-none');
+        drawer.classList.remove('translate-x-full');
+        renderDrawer();
+      }
+
+      function closeDrawer() {
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+        drawer.classList.add('translate-x-full');
+      }
+
+      function showToast(name) {
+        toastMessage.textContent = `"${name}" ajouté à votre panier bio !`;
+        toast.classList.remove('translate-y-24', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+          toast.classList.add('translate-y-24', 'opacity-0');
+          toast.classList.remove('translate-y-0', 'opacity-100');
+        }, 2800);
+      }
+
+      function updateQuantity(id, delta) {
+        const item = cart.find(i => i.id === id);
+        if (item) {
+          item.quantity += delta;
+          if (item.quantity <= 0) {
+            cart = cart.filter(i => i.id !== id);
+          }
+          saveCart(cart);
+          syncBadges();
+          renderDrawer();
+        }
+      }
+
+      function removeItem(id) {
+        cart = cart.filter(i => i.id !== id);
+        saveCart(cart);
+        syncBadges();
+        renderDrawer();
+      }
+
+      function renderDrawer() {
+        if (cart.length === 0) {
+          cartItemsContainer.innerHTML = `
+            <div class="flex flex-col items-center justify-center py-16 text-center">
+              <span class="material-symbols-outlined text-[#899c8e] text-5xl mb-3">nature</span>
+              <p class="font-serif text-xl text-primary font-normal">Votre panier est encore vide</p>
+              <p class="text-xs text-[#637667] max-w-xs mt-1 mb-5">Découvrez notre nutrition biologique et nos accessoires éco-responsables.</p>
+              <button onclick="document.getElementById('cartDrawerBackdrop').click()" class="px-6 py-2.5 bg-primary text-white rounded-full text-xs font-semibold uppercase tracking-wider">
+                Explorer les rayons
+              </button>
+            </div>
+          `;
+          drawerSubtotal.textContent = '0,00€';
+          drawerShipping.textContent = '0,00€';
+          drawerTotal.textContent = '0,00€';
+          shippingProgressBar.style.width = '0%';
+          shippingGoalText.innerHTML = `Livraison offerte à partir de <strong class="text-primary font-bold">49,00€</strong>`;
+          return;
+        }
+
+        let subtotal = 0;
+        cartItemsContainer.innerHTML = '';
+
+        cart.forEach(item => {
+          const itemTotal = item.price * item.quantity;
+          subtotal += itemTotal;
+
+          const row = document.createElement('div');
+          row.className = "flex items-center gap-3 p-3 bg-[#f7faf7] border border-[#e4ede4] rounded-2xl";
+          row.innerHTML = `
+            <div class="w-14 h-14 rounded-xl bg-white border border-[#dbe6db] overflow-hidden flex-shrink-0 flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-[20px]">eco</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h4 class="text-xs font-semibold text-primary truncate leading-tight">${item.name}</h4>
+              <p class="text-xs font-bold text-[#a34825] mt-0.5">${item.price.toFixed(2)}€</p>
+              <div class="flex items-center gap-2 mt-1.5">
+                <button class="qty-minus w-5 h-5 rounded-full bg-white border border-[#d2dfd2] text-xs font-bold flex items-center justify-center text-primary hover:bg-[#ebf3eb]" data-id="${item.id}">-</button>
+                <span class="text-xs font-semibold text-primary px-1">${item.quantity}</span>
+                <button class="qty-plus w-5 h-5 rounded-full bg-white border border-[#d2dfd2] text-xs font-bold flex items-center justify-center text-primary hover:bg-[#ebf3eb]" data-id="${item.id}">+</button>
+              </div>
+            </div>
+            <button class="remove-btn p-1.5 text-[#869989] hover:text-red-700 transition-colors" data-id="${item.id}">
+              <span class="material-symbols-outlined text-[18px]">delete</span>
+            </button>
+          `;
+          cartItemsContainer.appendChild(row);
+        });
+
+        const freeThreshold = 49.00;
+        const shipping = subtotal >= freeThreshold ? 0.00 : 4.90;
+        const total = subtotal + shipping;
+
+        drawerSubtotal.textContent = `${subtotal.toFixed(2)}€`;
+        drawerShipping.textContent = shipping === 0 ? 'Offerte !' : `${shipping.toFixed(2)}€`;
+        drawerTotal.textContent = `${total.toFixed(2)}€`;
+
+        const pct = Math.min(100, (subtotal / freeThreshold) * 100);
+        shippingProgressBar.style.width = `${pct}%`;
+
+        if (subtotal >= freeThreshold) {
+          shippingGoalText.innerHTML = `<span class="text-emerald-800 font-bold">🌿 Vous bénéficiez de la livraison offerte !</span>`;
+        } else {
+          const diff = (freeThreshold - subtotal).toFixed(2);
+          shippingGoalText.innerHTML = `Plus que <strong class="text-primary font-bold">${diff}€</strong> pour la livraison offerte`;
+        }
+
+        cartItemsContainer.querySelectorAll('.qty-minus').forEach(b => {
+          b.addEventListener('click', () => updateQuantity(b.dataset.id, -1));
+        });
+        cartItemsContainer.querySelectorAll('.qty-plus').forEach(b => {
+          b.addEventListener('click', () => updateQuantity(b.dataset.id, 1));
+        });
+        cartItemsContainer.querySelectorAll('.remove-btn').forEach(b => {
+          b.addEventListener('click', () => removeItem(b.dataset.id));
+        });
+      }
+
+      // Add To Cart Listeners
+      document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const card = e.target.closest('.product-card');
+          const id = card.dataset.id;
+          const name = card.dataset.name;
+          const price = parseFloat(card.dataset.price);
+
+          const existing = cart.find(i => i.id === id);
+          if (existing) {
+            existing.quantity += 1;
+          } else {
+            cart.push({ id, name, price, quantity: 1 });
+          }
+
+          saveCart(cart);
+          syncBadges();
+          showToast(name);
+          openDrawer();
+        });
+      });
+
+      // Filter Logic (Species & Categories)
+      let currentSpecie = 'all';
+      let currentCategory = 'all';
+
+      const speciesBtns = document.querySelectorAll('.species-btn');
+      const catBtns = document.querySelectorAll('.cat-btn');
+      const cards = document.querySelectorAll('.product-card');
+      const noProd = document.getElementById('noProductsMsg');
+
+      function applyFilters() {
+        let count = 0;
+        cards.forEach(card => {
+          const sp = card.dataset.specie;
+          const ct = card.dataset.cat;
+
+          const matchSp = (currentSpecie === 'all') || (sp === currentSpecie);
+          const matchCt = (currentCategory === 'all') || (ct === currentCategory);
+
+          if (matchSp && matchCt) {
+            card.classList.remove('hidden');
+            count++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+
+        if (count === 0) {
+          noProd.classList.remove('hidden');
+        } else {
+          noProd.classList.add('hidden');
+        }
+      }
+
+      speciesBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          speciesBtns.forEach(b => {
+            b.classList.remove('bg-primary', 'text-white', 'active');
+            b.classList.add('bg-white', 'text-[#2d3d30]');
+          });
+          btn.classList.add('bg-primary', 'text-white', 'active');
+          btn.classList.remove('bg-white', 'text-[#2d3d30]');
+          currentSpecie = btn.dataset.specie;
+          applyFilters();
+        });
+      });
+
+      catBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          catBtns.forEach(b => {
+            b.classList.remove('bg-primary', 'text-white', 'active');
+            b.classList.add('text-[#465b4a]');
+          });
+          btn.classList.add('bg-primary', 'text-white', 'active');
+          btn.classList.remove('text-[#465b4a]');
+          currentCategory = btn.dataset.cat;
+          applyFilters();
+        });
+      });
+
+      if (openTrigger) openTrigger.addEventListener('click', openDrawer);
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      if (backdrop) {
+        backdrop.addEventListener('click', e => {
+          if (e.target === backdrop) closeDrawer();
+        });
+      }
+
+      syncBadges();
+    })();
+  </script>
+</body></html>

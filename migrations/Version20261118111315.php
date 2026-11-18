@@ -1,0 +1,45 @@
+<?php
+
+declare(strict_types=1);
+
+namespace DoctrineMigrations;
+
+use Doctrine\DBAL\Schema\Schema;
+use Doctrine\Migrations\AbstractMigration;
+
+/**
+ * Auto-generated Migration: Please modify to your needs!
+ */
+final class Version20261118111315 extends AbstractMigration
+{
+    public function getDescription(): string
+    {
+        return '';
+    }
+
+    public function up(Schema $schema): void
+    {
+        // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql('CREATE TABLE animalerie (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(150) NOT NULL, catalogue_id INT NOT NULL, INDEX IDX_21CB733E4A7843DC (catalogue_id), PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4');
+        $this->addSql('CREATE TABLE article (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(150) NOT NULL, description VARCHAR(255) NOT NULL, photo VARCHAR(255) NOT NULL, prix NUMERIC(10, 2) NOT NULL, rayon_id INT NOT NULL, type_article VARCHAR(255) NOT NULL, stock_disponible INT DEFAULT NULL, INDEX IDX_23A0E66D3202E52 (rayon_id), PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4');
+        $this->addSql('CREATE TABLE catalogue (id INT AUTO_INCREMENT NOT NULL, PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4');
+        $this->addSql('CREATE TABLE rayon (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(100) NOT NULL, catalogue_id INT NOT NULL, INDEX IDX_D5E5BC3C4A7843DC (catalogue_id), PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4');
+        $this->addSql('CREATE TABLE messenger_messages (id BIGINT AUTO_INCREMENT NOT NULL, body LONGTEXT NOT NULL, headers LONGTEXT NOT NULL, queue_name VARCHAR(190) NOT NULL, created_at DATETIME NOT NULL, available_at DATETIME NOT NULL, delivered_at DATETIME DEFAULT NULL, INDEX IDX_75EA56E0FB7336F0E3BD61CE16BA31DBBF396750 (queue_name, available_at, delivered_at, id), PRIMARY KEY (id))');
+        $this->addSql('ALTER TABLE animalerie ADD CONSTRAINT FK_21CB733E4A7843DC FOREIGN KEY (catalogue_id) REFERENCES catalogue (id)');
+        $this->addSql('ALTER TABLE article ADD CONSTRAINT FK_23A0E66D3202E52 FOREIGN KEY (rayon_id) REFERENCES rayon (id)');
+        $this->addSql('ALTER TABLE rayon ADD CONSTRAINT FK_D5E5BC3C4A7843DC FOREIGN KEY (catalogue_id) REFERENCES catalogue (id)');
+    }
+
+    public function down(Schema $schema): void
+    {
+        // this down() migration is auto-generated, please modify it to your needs
+        $this->addSql('ALTER TABLE animalerie DROP FOREIGN KEY FK_21CB733E4A7843DC');
+        $this->addSql('ALTER TABLE article DROP FOREIGN KEY FK_23A0E66D3202E52');
+        $this->addSql('ALTER TABLE rayon DROP FOREIGN KEY FK_D5E5BC3C4A7843DC');
+        $this->addSql('DROP TABLE animalerie');
+        $this->addSql('DROP TABLE article');
+        $this->addSql('DROP TABLE catalogue');
+        $this->addSql('DROP TABLE rayon');
+        $this->addSql('DROP TABLE messenger_messages');
+    }
+}

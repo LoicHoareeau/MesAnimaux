@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier | MesAnimaux{% endblock %}
+
+{% block body %}
+    <section class="intro cart-intro">
+        <div>
+            <h1>Votre panier</h1>
+            <p>Vos articles sont conservés dans ce navigateur.</p>
+        </div>
+        <a class="button button-outline" href="{{ path('app_catalogue') }}">Continuer mes achats</a>
+    </section>
+    <section class="cart-layout" aria-label="Contenu du panier" data-cart-page>
+        <div>
+            <p role="status" class="cart-status" data-cart-status></p>
+            <p class="empty-cart" data-cart-empty hidden>Votre panier est vide. Retrouvez les animaux et les produits dans le catalogue.</p>
+            <noscript><p>Activez JavaScript pour accéder à votre panier.</p></noscript>
+            <ul class="cart-list" data-cart-lines></ul>
+        </div>
+        <aside class="summary" aria-label="Récapitulatif">
+            <h2>Récapitulatif</h2>
+            <p>Sous-total <strong data-cart-total>0,00 €</strong></p>
+        </aside>
+        {% for article in articles %}
+            <template data-cart-article="{{ article.id }}" data-name="{{ article.nom }}" data-cents="{{ article.prix|replace({'.': ''}) }}">
+                <li class="cart-line">
+                    <div class="cart-item">
+                        {% include 'boutique/_photo.html.twig' with {article: article, photoClass: 'cart-photo'} only %}
+                        <div><strong>{{ article.nom }}</strong><small>{{ article.rayon.nom }}</small></div>
+                    </div>
+                    <div class="quantity">
+                        <button class="button button-outline" type="button" data-change="-1" aria-label="Diminuer la quantité de {{ article.nom }}">−</button>
+                        <span data-quantity></span>
+                        <button class="button button-outline" type="button" data-change="1" aria-label="Augmenter la quantité de {{ article.nom }}">+</button>
+                    </div>
+                    <strong data-line-total></strong>
+                    <button class="text-button" type="button" data-remove aria-label="Retirer {{ article.nom }}">Retirer</button>
+                </li>
+            </template>
+        {% endfor %}
+    </section>
+{% endblock %}

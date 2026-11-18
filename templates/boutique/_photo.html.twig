@@ -1,0 +1,13 @@
+{%- set images = {
+    'Lapin nain': 'lapin-nain',
+    'Croquettes pour chien': 'croquettes-chien',
+    'Jouet en corde': 'jouet-corde',
+    'Harnais Balade': 'harnais-balade'
+} -%}
+{%- set illustration = images[article.nom]|default(null) -%}
+{%- set photo = article.photo and not (article.photo starts with 'data:') ? article.photo : (illustration ? 'images/boutique/' ~ illustration ~ '.jpg' : null) -%}
+{% if photo %}
+    <img class="{{ photoClass }}" src="{{ asset(photo) }}" alt="" width="627" height="627" loading="lazy">
+{% else %}
+    <div class="{{ photoClass }} placeholder" aria-hidden="true">{{ article.rayon.nom|first }}</div>
+{% endif %}

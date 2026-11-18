@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue | MesAnimaux{% endblock %}
+
+{% block body %}
+    {% if app.current_route == 'app_accueil' %}
+        <section class="intro shop-intro">
+            <div class="intro-copy">
+                <h1>Tout pour la vie<br>avec eux.</h1>
+                <p>De la gamelle à la promenade, retrouvez les animaux et les essentiels qui font leur quotidien.</p>
+                <a class="button button-primary" href="#articles">Explorer la boutique</a>
+            </div>
+            <figure class="intro-photo">
+                <img src="{{ asset('images/boutique/chat-maison.jpg') }}" width="900" height="600" alt="Un chat tigré dans les bras de sa propriétaire">
+            </figure>
+        </section>
+    {% else %}
+        <section class="catalogue-intro">
+            <h1>Le catalogue</h1>
+            <p>Recherchez un article ou explorez nos rayons.</p>
+        </section>
+    {% endif %}
+
+    <nav class="departments" aria-label="Rayons">
+        {% for rayon in rayons %}
+            <a href="{{ path('app_catalogue', {rayon: rayon.id, q: recherche}) }}" {% if rayonId == rayon.id %}aria-current="true"{% endif %}>
+                <span>{{ rayon.nom }}</span><span aria-hidden="true">↗</span>
+            </a>
+        {% endfor %}
+    </nav>
+
+    <section id="articles" class="listing" aria-labelledby="catalogue-title">
+        <div class="listing-heading">
+            <h2 id="catalogue-title">{{ app.current_route == 'app_accueil' ? 'Dans la boutique' : 'Les articles' }}</h2>
+            <span class="result-count">{{ articles|length }} {{ articles|length == 1 ? 'article' : 'articles' }}</span>
+        </div>
+        <form class="filters" action="{{ path('app_catalogue') }}" method="get">
+            <label>Rechercher par nom
+                <input type="search" name="q" maxlength="150" value="{{ recherche }}" placeholder="Ex. harnais">
+            </label>
+            <label>Rayon
+                <select name="rayon">
+                    <option value="0">Tous les rayons</option>
+                    {% for rayon in rayons %}
+                        <option value="{{ rayon.id }}"{% if rayonId == rayon.id %} selected{% endif %}>{{ rayon.nom }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <button class="button button-dark" type="submit">Rechercher</button>
+            {% if recherche or rayonId %}
+                <a href="{{ path('app_catalogue') }}#articles">Réinitialiser</a>
+            {% endif %}
+        </form>
+
+        <p class="cart-status" role="status" data-cart-status></p>
+        <div class="product-grid">
+            {% for article in articles %}
+                <article class="product">
+                    {% include 'boutique/_photo.html.twig' with {article: article, photoClass: 'product-photo'} only %}
+                    <div class="product-info">
+                        <span class="category">{{ article.rayon.nom }}</span>
+                        <h3>{{ article.nom }}</h3>
+                        <p>{{ article.description }}</p>
+                        {% if article.stockDisponible is defined and article.stockDisponible is not null %}
+                            <p class="stock">Stock indicatif {{ article.stockDisponible }}</p>
+                        {% endif %}
+                        <div class="product-actions">
+                            <strong>{{ article.prix|number_format(2, ',', ' ') }} €</strong>
+                            <button class="button button-primary" type="button" data-add-id="{{ article.id }}" data-add-name="{{ article.nom }}">Ajouter<span class="visually-hidden"> {{ article.nom }} au panier</span></button>
+                        </div>
+                    </div>
+                </article>
+            {% else %}
+                <p>Aucun article trouvé. Essaie un autre nom ou change de rayon.</p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
