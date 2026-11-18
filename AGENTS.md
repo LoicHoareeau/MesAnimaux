@@ -15,7 +15,7 @@
 ## Tests et publication
 
 - Avant chaque livraison, exécute les tests pertinents, vérifie les pages modifiées dans le navigateur aux tailles d’écran pertinentes et teste les parcours touchés, y compris les messages des fonctionnalités indisponibles. Signale tout contrôle bloqué ou en échec.
-- Si aucun dépôt local n’existe, initialise-le avec `git init`. Utilise `origin` pour le dépôt GitHub `https://github.com/LoicHoareeau/MesAnimaux.git` et vérifie sa destination avant de pousser.
+- Si aucun dépôt local n’existe, initialise-le avec `git init -b main`. La branche principale est `main`. Utilise `origin` pour le dépôt GitHub `https://github.com/LoicHoareeau/MesAnimaux.git` et vérifie sa destination avant de pousser.
 - Pour chaque modification prête à livrer, inspecte le diff, ajoute seulement les fichiers concernés, crée un commit et pousse-le sur la branche de travail vers `origin`. Préserve les changements locaux préexistants et garde les secrets hors du commit. Vérifie le résultat du push avant d’annoncer la livraison.
 
 Les conventions Symfony ci-dessous s’appliquent uniquement dans le périmètre frontend défini ci-dessus.
