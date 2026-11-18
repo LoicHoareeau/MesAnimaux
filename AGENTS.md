@@ -1,20 +1,24 @@
 # AGENTS.md
 
-This is a Symfony project. Check `composer.json` for the exact Symfony/PHP version
-in use, and read `symfony.lock` to see which recipes ran. Don't assume Doctrine,
-Twig, API Platform, Messenger, or Lock are installed unless one of those says so.
+## Périmètre de l’IA
 
-## Ask before generating
+- Travaille exclusivement sur le frontend de MesAnimaux, notamment les templates Twig, les feuilles de style, le JavaScript, les ressources visuelles et les tests de l’interface.
+- Les entités Doctrine et les contrôleurs Symfony, notamment `src/Entity/` et `src/Controller/`, sont strictement en lecture seule pour l’IA. N’y crée, ne modifie, ne déplace et ne supprime aucun fichier, y compris via un générateur ou un outil de formatage. Si une évolution nécessite une intervention backend, signale-la au responsable du projet.
+- Le projet utilise Symfony 8.1 et requiert PHP 8.4 ou supérieur. Vérifie `composer.json` et `symfony.lock` avant de t’appuyer sur un composant ou une recette Flex.
 
-If the task doesn't specify, ask rather than guess:
+## Maquette et fonctionnalités
 
-- Persistence: Doctrine ORM, Doctrine ODM, or none?
-- Interface: server-rendered (Twig), API (Serializer, maybe API Platform), or both?
-- Auth: SecurityBundle, and which authenticator?
+- Utilise le dossier `Maquette/` comme référence pour construire le site. Vérifie la fidélité de la mise en page, des visuels, de la navigation et des états d’interface représentés dans les maquettes.
+- Implémente uniquement les fonctionnalités déjà discutées et validées par le responsable du projet. Demande sa validation avant d’ajouter une fonctionnalité dont le périmètre est incertain.
+- Si une fonctionnalité visible est absente, indisponible ou pas encore initialisée, informe le visiteur à l’endroit où il essaie de l’utiliser. Affiche par exemple « Ce site est une version de test. Cette fonctionnalité n’est pas disponible pour le moment. » N’affiche jamais une confirmation de réussite pour une action qui n’a pas été exécutée.
 
-If you can't ask (no interactive channel), state the assumption you're making and
-pick the smallest option (e.g. no persistence layer) rather than scaffolding a
-full stack nobody asked for.
+## Tests et publication
+
+- Avant chaque livraison, exécute les tests pertinents, vérifie les pages modifiées dans le navigateur aux tailles d’écran pertinentes et teste les parcours touchés, y compris les messages des fonctionnalités indisponibles. Signale tout contrôle bloqué ou en échec.
+- Si aucun dépôt local n’existe, initialise-le avec `git init`. Utilise `origin` pour le dépôt GitHub `https://github.com/LoicHoareeau/MesAnimaux.git` et vérifie sa destination avant de pousser.
+- Pour chaque modification prête à livrer, inspecte le diff, ajoute seulement les fichiers concernés, crée un commit et pousse-le sur la branche de travail vers `origin`. Préserve les changements locaux préexistants et garde les secrets hors du commit. Vérifie le résultat du push avant d’annoncer la livraison.
+
+Les conventions Symfony ci-dessous s’appliquent uniquement dans le périmètre frontend défini ci-dessus.
 
 ## Adding features: Flex, not hand-wiring
 
