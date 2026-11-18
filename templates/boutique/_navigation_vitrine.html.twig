@@ -1,16 +1,15 @@
-{% set filtresRoute = route %}
 <div class="flex flex-col gap-2" data-vitrine-filtres id="vitrine-filtres">
     <nav class="flex flex-wrap items-center gap-2" aria-label="Rayons du catalogue">
         {% if rayons|length > 1 %}
-            <a href="{{ path(filtresRoute, {q: recherche, rayon: ''}) }}#vitrine-filtres" data-site-link class="px-4 py-2 min-h-11 rounded-full {{ rayon == '' ? 'bg-primary text-white' : 'bg-surface-container-low text-primary' }}"{% if rayon == '' %} aria-current="true"{% endif %}>Tout</a>
+            <a href="{{ path(route, {q: recherche, rayon: ''}) }}#vitrine-filtres" data-site-link class="px-4 py-2 min-h-11 rounded-full {{ rayon == '' ? 'bg-primary text-white' : 'bg-surface-container-low text-primary' }}"{% if rayon == '' %} aria-current="true"{% endif %}>Tout</a>
             {% for nom in rayons %}
-                {% set destination = route == 'app_boutique_soins' and nom == 'Alimentation' ? route : filtresRoute %}
+                {% set destination = route == 'app_boutique_soins' and nom != 'Alimentation' ? 'app_catalogue' : route %}
                 <a href="{{ path(destination, {q: recherche, rayon: nom}) }}#vitrine-filtres" data-site-link class="px-4 py-2 min-h-11 rounded-full {{ rayon == nom ? 'bg-primary text-white' : 'bg-surface-container-low text-primary' }}"{% if rayon == nom %} aria-current="true"{% endif %}>{{ nom == 'Mode' ? 'Mode & Accessoires' : nom }}</a>
             {% endfor %}
         {% endif %}
     </nav>
     <form action="{{ path(route) }}#vitrine-filtres" method="get" class="flex flex-wrap items-center gap-2">
-        {% if rayon %}<input type="hidden" name="rayon" value="{{ rayon }}">{% endif %}
+        <input type="hidden" name="rayon" value="{{ rayon }}">
         <label for="vitrine-recherche" class="sr-only">Rechercher par nom</label>
         <input id="vitrine-recherche" type="search" name="q" placeholder="Rechercher par nom" value="{{ recherche }}" maxlength="150" class="min-h-11 min-w-0 flex-1 rounded-full border border-outline-variant bg-white px-4 text-on-surface">
         <button type="submit" class="min-h-11 px-4 rounded-full bg-primary text-white">Rechercher</button>

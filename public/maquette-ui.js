@@ -71,7 +71,11 @@ function syncMaquetteBadges() {
     const count = readMaquetteCart().reduce((total, item) => total + (Number(item.quantity ?? item.qty) || 1), 0);
     document.querySelectorAll('header [data-path="panier"] span.w-5, header [aria-label="Mon panier"] span:last-child, #headerCartCount')
         .forEach(badge => {
-            if (/^\d+$/.test(badge.textContent.trim())) badge.textContent = count;
+            if (!/^\d+$/.test(badge.textContent.trim())) return;
+            badge.textContent = count;
+            if (badge.matches('button[aria-label="Mon panier"] span.bg-secondary')) {
+                badge.style.display = count > 0 ? 'flex' : 'none';
+            }
         });
 }
 
@@ -117,10 +121,10 @@ document.addEventListener('click', event => {
         event.stopImmediatePropagation();
         return;
     }
-    if (target.matches('[data-demo-link], #checkout-cta-btn')) {
+    if (target.matches('[data-demo-link], #checkout-cta-btn, #btn-subscribe-trial, a[href="#"]:not([onclick])')) {
         event.preventDefault();
         event.stopImmediatePropagation();
-        notifyMaquette('Cette action est présentée à titre de démonstration.');
+        notifyMaquette('Cette fonctionnalité est indisponible dans cette version de test.');
         return;
     }
 
@@ -129,7 +133,7 @@ document.addEventListener('click', event => {
         addMaquetteItem(liveCard, liveCard.dataset.name, liveCard.dataset.price, liveCard.dataset.id);
         return;
     }
-    if (target.closest('header') && target.matches('[aria-label="Mon panier"]') && document.querySelector('[data-live-card]')) {
+    if (target.closest('header') && target.matches('[aria-label="Mon panier"]') && document.querySelector('[data-vitrine-filtres]')) {
         event.preventDefault();
         event.stopImmediatePropagation();
         location.assign('/panier');
@@ -161,6 +165,10 @@ document.addEventListener('click', event => {
 
 document.addEventListener('DOMContentLoaded', () => {
     markVitrineNavigation();
+    syncBotanicalSummary();
+    if (document.querySelector('[data-vitrine-empty]')) {
+        document.querySelector('#noProductsMsg')?.style.setProperty('display', 'none');
+    }
     if (document.documentElement.dataset.maquette === 'animaux' && document.querySelector('[data-vitrine-filtres]')) {
         filterVitrineAnimaux();
     }
@@ -187,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('submit', event => {
     if (!event.target.matches('footer form')) return;
     event.preventDefault();
-    notifyMaquette('Inscription simulée pour cette démonstration.');
+    notifyMaquette('La newsletter est indisponible dans cette version de test.');
 }, true);
 
 
@@ -197,6 +205,7 @@ window.addEventListener('pageshow', syncMaquetteBadges);
 
 function markVitrineNavigation() {
     const current = location.pathname.replace(/\/$/, '') || '/';
+    if (current.startsWith('/maquette/')) return;
     document.querySelectorAll('header nav a[data-site-link]').forEach(link => {
         const destination = new URL(link.href);
         const active = destination.pathname === current && !destination.hash
@@ -222,10 +231,37 @@ function filterVitrineAnimaux() {
         const espece = especes[index];
         const visible = cards.filter(card => espece === 'all' || card.dataset.specie === espece);
         button.hidden = visible.length === 0;
+        if (button.hidden) button.style.display = 'none';
         button.setAttribute('aria-pressed', String(index === 0));
         button.addEventListener('click', () => {
             buttons.forEach(other => other.setAttribute('aria-pressed', String(other === button)));
             cards.forEach(card => card.classList.toggle('hidden', !visible.includes(card)));
         });
     });
+}
+
+function syncBotanicalSummary() {
+    const subtotal = document.querySelector('#summary-subtotal');
+    const promoTag = document.querySelector('#promo-applied-tag');
+    const discount = document.querySelector('#discount-row');
+    const progress = document.querySelector('#shipping-progress-bar');
+    if (!subtotal || !promoTag || !discount || !progress) return;
+
+    const gauge = progress.parentElement.previousElementSibling;
+    const [label, percent] = gauge.querySelectorAll('span');
+    const message = progress.closest('section')?.querySelector('p');
+    function refresh() {
+        const amount = Number(subtotal.textContent.replace(/[^\d,]/g, '').replace(',', '.'));
+        const reached = amount >= 49;
+        label.textContent = reached ? 'Palier de 49 € atteint' : 'Livraison offerte dès 49 €';
+        percent.textContent = progress.style.width;
+        if (message) {
+            message.textContent = reached ? 'La livraison offerte est incluse dans cette simulation.'
+                : 'Il manque ' + formatMaquettePrice.format(Math.max(0, 49 - amount)) + ' pour atteindre le seuil de livraison offerte.';
+        }
+        const display = discount.classList.contains('hidden') ? 'none' : '';
+        if (promoTag.style.display !== display) promoTag.style.display = display;
+    }
+    refresh();
+    new MutationObserver(refresh).observe(subtotal, { childList: true });
 }

@@ -15,7 +15,7 @@
         data-cat="{{ ecran == 'accessoires' ? ('chien chat accessoires ' ~ (('manteau' in nomNormalise or 'imperméable' in nomNormalise) ? 'manteaux' : 'sellerie')) : rayon }}"
         data-animal="{{ cible == 'all' ? 'chien chat nac oiseau' : (cible == 'rongeur' ? 'nac' : cible) }}"
         data-category="{{ accueilCategorie[rayon]|default('all') }}" data-specie="{{ cible }}">
-        <div class="relative overflow-hidden bg-surface-sand {{ ecran == 'animaux' ? 'h-72' : 'aspect-square rounded-lg' }}">
+        <div class="relative overflow-hidden {{ ecran == 'catalogue' ? 'bg-surface-container-low' : 'bg-surface-sand' }} {{ ecran == 'animaux' ? 'h-72' : 'aspect-square rounded-lg' }}">
             {% if article.photo %}
                 <img class="absolute inset-0 h-full w-full object-cover" src="{{ asset(article.photo) }}" alt="{{ article.nom }}{% if pelage %}, {{ pelage }}{% endif %}" width="360" height="360" loading="lazy">
             {% endif %}
@@ -26,7 +26,7 @@
             {% if pelage %}<p class="mt-1 text-sm font-semibold text-primary">{{ espece == 'Oiseau' ? 'Plumage' : 'Pelage' }} · {{ pelage }}</p>{% endif %}
             <p class="mt-2 mb-4 font-body-sm text-body-sm text-on-surface-variant">{{ article.description }}</p>
             <div class="mt-auto flex items-center justify-between flex-wrap gap-2">
-                <strong class="font-title-md text-primary tabular-nums">{{ article.prix|number_format(2, ',', ' ') }} €</strong>
+                <strong class="font-title-md text-title-md text-primary tabular-nums">{{ article.prix|number_format(2, ',', ' ') }} €</strong>
                 <button type="button" class="inline-flex items-center gap-1.5 rounded-full px-4 min-h-11 font-semibold {{ ecran == 'catalogue' ? 'bg-primary text-white' : 'bg-secondary-container text-on-secondary-container' }}" data-live-add aria-label="Ajouter {{ article.nom }} au panier">
                     <span class="material-symbols-outlined text-[18px]" aria-hidden="true">add_shopping_cart</span>
                     Ajouter
@@ -35,5 +35,5 @@
         </div>
     </article>
 {% else %}
-    <p class="col-span-full">Aucune fiche ne correspond. {% if recherche %}Essayez un autre nom ou effacez la recherche.{% else %}Explorez un autre rayon.{% endif %}</p>
+    <p class="col-span-full" data-vitrine-empty>Aucune fiche ne correspond. {% if recherche %}Essayez un autre nom ou effacez la recherche.{% else %}Explorez un autre rayon.{% endif %}</p>
 {% endfor %}
