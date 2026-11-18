@@ -11,10 +11,10 @@
         <a class="skip-link" href="#contenu">Aller au contenu</a>
         <header class="site-header">
             <nav class="shell navigation" aria-label="Navigation principale">
-                <a class="brand" href="{{ path('app_accueil') }}">MesAnimaux<span>.</span></a>
+                <a class="brand" href="{{ path('app_accueil_donnees') }}">MesAnimaux<span>.</span></a>
                 <div class="nav-actions">
-                    <a href="{{ path('app_catalogue') }}"{% if app.current_route in ['app_accueil', 'app_catalogue'] %} aria-current="page"{% endif %}>Catalogue</a>
-                    <a class="button button-outline" href="{{ path('app_panier') }}"{% if app.current_route == 'app_panier' %} aria-current="page"{% endif %}>Panier <span data-cart-count>0</span></a>
+                    <a href="{{ path('app_catalogue_donnees') }}"{% if app.current_route in ['app_accueil_donnees', 'app_catalogue_donnees'] %} aria-current="page"{% endif %}>Catalogue</a>
+                    <a class="button button-outline" href="{{ path('app_panier_donnees') }}"{% if app.current_route == 'app_panier_donnees' %} aria-current="page"{% endif %}>Panier <span data-cart-count>0</span></a>
                 </div>
             </nav>
         </header>

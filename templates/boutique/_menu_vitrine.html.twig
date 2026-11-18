@@ -1,0 +1,11 @@
+{% set navigation = {
+    app_catalogue: 'Tous les produits',
+    app_boutique_soins: 'Boutique & Soins',
+    app_animaux: 'Animaux',
+    app_accessoires: 'Loisirs & Accessoires'
+} %}
+{% for destination, libelle in navigation %}
+    <a href="{{ path(destination) }}" data-site-link class="inline-flex shrink-0 items-center whitespace-nowrap rounded-md px-3 py-2 hover:bg-surface-container-low"
+       {% if route == destination %}aria-current="page"{% endif %}>{{ libelle }}</a>
+{% endfor %}
+<a href="{{ path('app_accueil') }}#charte" data-site-link class="inline-flex shrink-0 items-center whitespace-nowrap rounded-md px-3 py-2 hover:bg-surface-container-low">Nos engagements</a>

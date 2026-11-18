@@ -1,0 +1,39 @@
+{% for article in articles %}
+    {% set rayon = article.rayon.nom %}
+    {% set espece = article.espece|default('') %}
+    {% set pelage = article.pelage|default('') %}
+    {% set esp = {'Chien': 'chien', 'Chat': 'chat', 'Lapin': 'rongeur', 'Oiseau': 'oiseau'} %}
+    {% set nomNormalise = article.nom|lower %}
+    {% set cible = esp[espece]|default('all') %}
+    {% if cible == 'all' %}
+        {% set cible = 'chat' in nomNormalise ? 'chat' : ('lapin' in nomNormalise ? 'rongeur' : ('chien' in nomNormalise ? 'chien' : 'all')) %}
+    {% endif %}
+    {% set accueilCategorie = {'Animaux': 'animaux', 'Alimentation': 'nutrition', 'Loisirs': 'mobilier', 'Mode': 'accessoires'} %}
+    {% set styleCarte = ecran == 'animaux' ? 'overflow-hidden' : (ecran == 'catalogue' ? 'rounded-3xl p-space-md' : 'p-space-md') %}
+    <article class="product-card group flex flex-col bg-surface-container-lowest rounded-xl {{ styleCarte }} shadow-sm hover:shadow-lg transition-shadow"
+        data-live-card data-id="article-{{ article.id }}" data-name="{{ article.nom }}" data-price="{{ article.prix }}"
+        data-cat="{{ ecran == 'accessoires' ? ('chien chat accessoires ' ~ (('manteau' in nomNormalise or 'imperméable' in nomNormalise) ? 'manteaux' : 'sellerie')) : rayon }}"
+        data-animal="{{ cible == 'all' ? 'chien chat nac oiseau' : (cible == 'rongeur' ? 'nac' : cible) }}"
+        data-category="{{ accueilCategorie[rayon]|default('all') }}" data-specie="{{ cible }}">
+        <div class="relative overflow-hidden bg-surface-sand {{ ecran == 'animaux' ? 'h-72' : 'aspect-square rounded-lg' }}">
+            {% if article.photo %}
+                <img class="absolute inset-0 h-full w-full object-cover" src="{{ asset(article.photo) }}" alt="{{ article.nom }}{% if pelage %}, {{ pelage }}{% endif %}" width="360" height="360" loading="lazy">
+            {% endif %}
+            <span class="absolute left-3 bottom-3 px-3 py-1 rounded-full bg-primary text-white text-xs font-semibold">{{ espece ?: rayon }}</span>
+        </div>
+        <div class="flex flex-col flex-1 {{ ecran == 'animaux' ? 'p-space-lg' : 'pt-space-md' }}">
+            <h3 class="font-headline-sm text-headline-sm text-primary">{{ article.nom }}</h3>
+            {% if pelage %}<p class="mt-1 text-sm font-semibold text-primary">{{ espece == 'Oiseau' ? 'Plumage' : 'Pelage' }} · {{ pelage }}</p>{% endif %}
+            <p class="mt-2 mb-4 font-body-sm text-body-sm text-on-surface-variant">{{ article.description }}</p>
+            <div class="mt-auto flex items-center justify-between flex-wrap gap-2">
+                <strong class="font-title-md text-primary tabular-nums">{{ article.prix|number_format(2, ',', ' ') }} €</strong>
+                <button type="button" class="inline-flex items-center gap-1.5 rounded-full px-4 min-h-11 font-semibold {{ ecran == 'catalogue' ? 'bg-primary text-white' : 'bg-secondary-container text-on-secondary-container' }}" data-live-add aria-label="Ajouter {{ article.nom }} au panier">
+                    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">add_shopping_cart</span>
+                    Ajouter
+                </button>
+            </div>
+        </div>
+    </article>
+{% else %}
+    <p class="col-span-full">Aucune fiche ne correspond. {% if recherche %}Essayez un autre nom ou effacez la recherche.{% else %}Explorez un autre rayon.{% endif %}</p>
+{% endfor %}

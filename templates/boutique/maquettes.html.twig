@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Écrans de la maquette | MesAnimaux{% endblock %}
+
+{% block body %}
+    <section class="catalogue-intro">
+        <h1>Écrans de la maquette</h1>
+        <p>Ouvrez l’un des 11 exports intégrés à Symfony.</p>
+    </section>
+    <nav aria-label="Écrans de la maquette">
+        <ul>
+            {% for ecran, dossier in ecrans %}
+                <li><a href="{{ path('app_maquette', {ecran: ecran}) }}">{{ dossier|replace({'_': ' '})|capitalize }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+{% endblock %}

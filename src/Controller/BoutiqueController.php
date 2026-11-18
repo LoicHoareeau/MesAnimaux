@@ -11,8 +11,8 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class BoutiqueController extends AbstractController
 {
-    #[Route('/', name: 'app_accueil', methods: ['GET'])]
-    #[Route('/catalogue', name: 'app_catalogue', methods: ['GET'])]
+    #[Route('/accueil-donnees', name: 'app_accueil_donnees', methods: ['GET'])]
+    #[Route('/catalogue-donnees', name: 'app_catalogue_donnees', methods: ['GET'])]
     public function catalogue(Request $request, ArticleRepository $articles, RayonRepository $rayons): Response
     {
         $recherche = mb_substr(trim($request->query->getString('q')), 0, 150);
@@ -26,7 +26,7 @@ final class BoutiqueController extends AbstractController
         ]);
     }
 
-    #[Route('/panier', name: 'app_panier', methods: ['GET'])]
+    #[Route('/panier-donnees', name: 'app_panier_donnees', methods: ['GET'])]
     public function panier(ArticleRepository $articles): Response
     {
         return $this->render('boutique/panier.html.twig', [
